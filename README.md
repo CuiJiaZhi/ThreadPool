@@ -4,8 +4,8 @@
 ```
 ThreadPoolV2/
 ├── autobuild.sh                 # 构建脚本
-├── CMakeLists.txt               # 总体 CMake 构建文件
-├── .vscode/settings.json        # VSCode 配置文件
+├── CMakeLists.txt               # 总体CMake构建文件
+├── .vscode/settings.json        # VSCode配置文件
 │
 ├── Optimize/                    # 优化版本（std::packaged_task + std::future）
 │   ├── include/
@@ -15,7 +15,7 @@ ThreadPoolV2/
 │   │   ├── main.cpp
 │   │   └── CMakeLists.txt
 │
-├── Origin/                      # 原始版本（自定义 Any/Result/Sem 实现）
+├── Origin/                      # 原始版本（自定义Any/Result/Sem实现）
 │   ├── include/
 │   │   ├── any.h
 │   │   ├── result.h

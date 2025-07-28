@@ -2,7 +2,7 @@
 ## C++双模式线程池
 ### 项目结构梳理
 ```
-ThreadPoolV2/
+ThreadPool/
 ├── autobuild.sh                 # 构建脚本
 ├── CMakeLists.txt               # 总体CMake构建文件
 ├── .vscode/settings.json        # VSCode配置文件
@@ -39,7 +39,7 @@ ThreadPoolV2/
     - 实现`Any`通用容器，利用类型擦除技术存储任务返回值；
     - 基于信号量同步机制实现`Result`类，支持任务结果异步获取；
     - 继承任务基类`Task`并重写`run`方法，通过`Result`对象异步获取任务结果；
-    - 使用中间类`Impl`，解耦任务与结果对象，避免悬垂指针问题。
+    - 使用`Pimpl`模式，解耦任务与结果对象，避免悬垂指针问题。
 - 标准库优化重构
     - 使用`std::packaged_task + std::future`替代自定义类型，消除继承约束；
     - 基于可变参模板+引用折叠，重构任务提交接口（`submitTask`），支持任意可调用对象；

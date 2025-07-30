@@ -3,32 +3,35 @@
 ### 项目结构梳理
 ```
 ThreadPool/
-├── autobuild.sh                 # 构建脚本
-├── CMakeLists.txt               # 总体CMake构建文件
-├── .vscode/settings.json        # VSCode配置文件
-│
-├── Optimize/                    # 优化版本（std::packaged_task + std::future）
-│   ├── include/
+├── CMakeLists.txt                      # CMakeLists.txt构建文件
+├── Optimize                            # 线程池优化版本（std::packaged_task + std::future）
+│   ├── CMakeLists.txt                  
+│   ├── include
 │   │   ├── threadOpt.h
 │   │   └── threadpoolOpt.h
-│   ├── src/
-│   │   ├── main.cpp
-│   │   └── CMakeLists.txt
-│
-├── Origin/                      # 原始版本（自定义Any/Result/Sem实现）
-│   ├── include/
+│   └── src
+│       ├── CMakeLists.txt
+│       └── main.cpp
+├── Origin                              # 线程池原始版本（自定义Any/Result/Sem实现）
+│   ├── CMakeLists.txt
+│   ├── include
 │   │   ├── any.h
 │   │   ├── result.h
 │   │   ├── sem.h
 │   │   ├── task.h
 │   │   ├── thread.h
 │   │   └── threadpool.h
-│   ├── src/
-│   │   ├── main.cpp
-│   │   ├── result.cpp
-│   │   ├── sem.cpp
-│   │   ├── task.cpp
-│   │   └── CMakeLists.txt
+│   └── src
+│       ├── CMakeLists.txt
+│       ├── main.cpp
+│       ├── result.cpp
+│       ├── sem.cpp
+│       ├── task.cpp
+│       ├── thread.cpp
+│       └── threadpool.cpp
+├── autobuild.sh                        # 构建脚本
+└── tools
+    └── logger.h                        # 日志
 ```
 ### 项目描述
 &emsp;&emsp;实现`Fixed/Cached`双模式线程池，支持任务调度、资源动态管理及异步结果获取。`Fixed`模式：固定线程数，低开销；`Cached`模式：动态扩容（上限`1024`线程），`60s`空闲线程自动回收。
